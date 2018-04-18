@@ -1,13 +1,25 @@
 package main
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	cron "github.com/robfig/cron"
 )
 
+func updateStations() {
+	// TODO update cached station data.
+	fmt.Println("Updating stations cache...")
+}
+
 func main() {
-	// TODO load data and set up timer task
+	updateStations()
+
+	cr := cron.New()
+	cr.AddFunc("@every 10s", updateStations)
+	cr.Start()
+
 	// TODO static info page on /
 
 	r := gin.Default()

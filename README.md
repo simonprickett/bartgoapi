@@ -8,9 +8,16 @@ I originally wrote this in Node.js a while back and you can see the code for tha
 
 ## Running Locally
 
-TODO - how to get up and running
+TODO - how to get up and running with dep
+
+TODO - environment variables?
+
+```
+go run main.go
+```
 
 ## Dependencies
 
 * [dep dependency manager](https://github.com/golang/dep)
 * [Gin web framework](https://gin-gonic.github.io/gin/)
+* [Cron library](https://github.com/robfig/cron)
