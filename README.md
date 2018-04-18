@@ -2,7 +2,7 @@
 
 ## Introduction
 
-BART provides an API that works with XML, and more recently JSON.  This was originally a project to provide JSON output when it wasn't available from BART (they added it later).  It's now a project to provide "nicer" JSON output than that which comes from BART directly.
+BART [provides an API](http://api.bart.gov/docs/overview/index.aspx) that works with XML, and more recently JSON.  This was originally a project to provide JSON output when it wasn't available from BART (they added it later).  It's now a project to provide "nicer" JSON output than that which comes from BART directly.
 
 I originally wrote this in Node.js a while back and you can see the code for that [here](https://github.com/simonprickett/bartnodeapi).  There's a running example of the Node code [here](http://bart.crudworks.org/api).
 
