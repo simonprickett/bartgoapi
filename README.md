@@ -12,6 +12,8 @@ TODO - how to get up and running with dep
 
 TODO - environment variables?
 
+TODO - Makefile
+
 ```
 go run main.go
 ```
