@@ -2,7 +2,10 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"net/http"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	cron "github.com/robfig/cron"
@@ -11,6 +14,36 @@ import (
 func updateStations() {
 	// TODO update cached station data.
 	fmt.Println("Updating stations cache...")
+
+	httpClient := &http.Client{
+		Timeout: time.Second * 4,
+	}
+
+	// TODO: Get the key out of here and don't use a demo key...
+	response, err := httpClient.Get("http://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V&json=y")
+
+	if err != nil {
+		fmt.Printf("Error accessing BART API: %v\n", err)
+		return
+	}
+
+	defer response.Body.Close()
+
+	if response.StatusCode == http.StatusOK {
+		// Look at this for JSON:
+		// https://stackoverflow.com/questions/17156371/how-to-get-json-response-in-golang
+		body, err := ioutil.ReadAll(response.Body)
+
+		if err != nil {
+			fmt.Printf("Error accessing BART API: %v\n", err)
+			return
+		}
+
+		fmt.Println(string(body))
+	} else {
+		fmt.Printf("Error accessing BART API: %v\n", response.StatusCode)
+		return
+	}
 }
 
 func main() {
