@@ -53,9 +53,11 @@ func main() {
 	cr.AddFunc("@every 10s", updateStations)
 	cr.Start()
 
-	// TODO static info page on /
-
 	r := gin.Default()
+
+	// TODO static info page on / served from a file
+	// https://github.com/gin-gonic/gin/issues/75
+	// r.Static("/assets", "./assets")
 
 	// AppEngine health
 	r.GET("/_ah/health", func(c *gin.Context) {
